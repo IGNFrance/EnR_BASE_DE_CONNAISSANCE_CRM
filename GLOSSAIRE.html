@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>GLOSSAIRE</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f8fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      font-size: 15px;
+    }
+
+    header {
+      background-color: #005577;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      margin: 0;
+    }
+
+    h2 {
+      color: #005577;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    .section {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+    th, td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    .info-icon {
+      
+      display: inline-block;
+      cursor: help;
+      color: #d60000;
+      font-size: 1.5em;
+      vertical-align: baseline;
+      position: relative;
+    }
+
+    .info-toggle {
+  display: none;
+}
+
+.info-icon {
+  cursor: pointer;
+  color: #0078d4;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.tooltip-content {
+  display: none;
+  background-color: #005577;
+  color: #fff;
+  padding: 25px 10px;
+  border-radius: 4px;
+  margin-top: 5px;
+  position: absolute;
+  z-index: 1000;
+  width: 800px;
+  max-width: 800px;
+  font-size: 0.9em;
+ white-space: pre-line;
+
+}
+.tooltip-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 0.95em;
+  background-color: #fff;
+  color: #333;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tooltip-content th,
+.tooltip-content td {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tooltip-content th {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+
+.info-toggle:checked + .info-icon + .tooltip-content {
+  display: block;
+}
+
+    .status-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+li {
+  line-height: 5px;
+}
+
+.tooltip {
+  display: inline-block;
+  font-size: 32px;       /* Taille du symbole ℹ️ */
+  color: #0077cc;         /* Couleur du symbole */
+  text-align: center;
+  cursor: help;
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  
+  /* Taille du texte de l'info-bulle */
+  font-size: 18px;
+  width: 800px;
+  background-color: #63556d;
+  color: #e8cc11;
+  text-align: left;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 10px;
+
+  position: absolute;
+  top: 0;
+  left: 120%; /* Position à droite du symbole */
+  z-index: 1;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+.tooltip-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Glossaire – Planification Énergétique</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>Acteurs de la planification</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Définition</th>
+          </tr>
+        </thead>
+        
+		<tbody>
+          
+		  <tr>
+  <td style="position: relative;">
+    <input type="checkbox" id="info_commune" class="info-toggle">
+    <label for="info_commune" class="info-icon">ⓘ</label>
+    <div class="tooltip-content">🏛️ <u><strong>Commune</strong></u> : collectivité locale responsable de la saisie des ZAER.    <label for="info_commune" class="tooltip-close">✖</label>
+Les communes jouent un rôle central et stratégique dans la saisie des Zones d’Accélération des Énergies 
+Renouvelables (ZAER), un dispositif introduit par la loi APER pour dynamiser le développement des EnR en France.</div>
+
+    <strong>Commune</strong>
+  </td>
+  <td>Responsable de la saisie et du suivi des ZAER</td>
+</tr>
+          <tr>
+  <td style="position: relative;">
+    <input type="checkbox" id="info_EPCI" class="info-toggle">
+    <label for="info_EPCI" class="info-icon">ⓘ</label>
+    <div class="tooltip-content">🧭 <u><strong>EPCI</strong></u> : Établissement Public de Coopération Intercommunale.
+	    <label for="info_EPCI" class="tooltip-close">✖</label>		
+			<u>Un EPCI peut</u> : 
+			
+			<li>Organiser des ateliers de cartographie avec les communes.</li>
+			<li>Fournir des données environnementales ou urbanistiques.</li>
+			<li>Coordonner la concertation publique à l’échelle intercommunale.</li>
+			<li>Centraliser les saisies sur le portail cartographique</li>
+			
+			<u>EnR.Délégation possible</u> : 
+			
+			Une commune peut déléguer la saisie des ZAER à son EPCI.
+
+📌<u>Ce qu’ils ne peuvent pas faire</u> :
+ 
+<li>Ils ne peuvent pas arrêter ou valider les ZAER.</li>
+<li>Seules les communes ont le pouvoir de délibérer et de transmettre les ZAER au référent préfectoral.</li>
+	  </div>
+	
+	
+<strong>EPCI</strong>
+            </td>
+			<td>Appuie la commune, peut émettre un avis</td
+          </tr>
+		  
+		  
+          <tr>
+            <td style="position: relative;">
+    <input type="checkbox" id="info_DDT" class="info-toggle">
+    <label for="info_DDT" class="info-icon">ⓘ</label>
+    <div class="tooltip-content">🛠️ <u><strong>DDT</strong></u> : Direction Départementale des Territoires.
+	<label for="info_DDT" class="tooltip-close">✖</label>
+	            <p><span class="tooltip">ℹ️
+    <span class="tooltiptext">
+	
+      🛂 <u>Rôle de la DDT dans la validation des comptes</u> :
+	  
+<u>Vérification de l'identité</u> : 
+
+La DDT est chargée de confirmer que la personne qui demande un accès au portail EnR est bien habilitée à représenter sa collectivité ou son organisme.
+
+<u>Validation manuelle</u> : 
+
+Une fois l’inscription effectuée sur le portail, la DDT reçoit une notification et doit approuver ou rejeter la demande selon les informations fournies.
+
+Contrôle des droits d’accès : Elle attribue les bons niveaux d’accès en fonction du profil de l’utilisateur (collectivité, opérateur, bureau d’études, etc.).
+
+<u>Suivi des inscriptions</u> : 
+
+La DDT peut consulter l’historique des validations et suivre les comptes actifs dans son périmètre géographique.
+
+</span>
+</p>
+<u>Appui technique aux collectivités</u> : 
+
+Les DDT accompagnent les communes dans la saisie des ZAER, conseils sur les contraintes réglementaires (urbanisme, environnement, etc...)
+  
+			
+<u>Vérification réglementaire</u> :
+
+<ul><li>Elles analysent les zones proposées pour s’assurer qu’elles ne contreviennent pas aux règles d’urbanisme,</li> 
+aux servitudes, ou aux enjeux environnementaux (Natura 2000, ZNIEFF, etc...).
+
+<li>Coordination avec les services de l’État Les DDT travaillent en lien avec la DREAL, les préfectures et les</li> 
+référents préfectoraux pour harmoniser les validations et éviter les incohérences entre territoires.
+
+<li>Appui à la concertation Elles peuvent participer aux réunions de concertation organisées par les EPCI ou</li>
+les communes, et formuler des avis techniques sur les ZAER proposées.</ul>
+<u>Préparation à l’arrêt préfectoral</u> :
+
+Une fois les zones saisies et concertées, les DDT préparent les éléments nécessaires à la validation ou au refus des ZAER par le Référent Préfectoral Unique (RPU).
+</div>
+
+<strong>DDT</strong></td>
+
+            <td>Supervise au niveau départemental</td>
+          </tr>
+          <tr>
+		  <td style="position: relative;">
+    <input type="checkbox" id="info_DREAL" class="info-toggle">
+    <label for="info_DREAL" class="info-icon">ⓘ</label>
+    <div class="tooltip-content">🛠️ <u><strong>DREAL</strong></u>: Direction Régionale de l’Environnement
+	<label for="info_DREAL" class="tooltip-close">✖</label>
+	
+	Dans le cadre des Zones d’Accélération des Énergies Renouvelables (ZAER), les DREAL :
+	
+<ul><li>Appuient les DDT dans l’analyse des zones proposées par les communes</li>
+<li>Participent à la validation ou au refus des zones via le Référent PréfectoralUnique (RPU)</li></ul>
+
+	</div>
+            <strong>DREAL</strong></td>
+			
+			<td>Appuie au niveau régional</td>
+          </tr>
+          <tr>
+            <td style="position: relative;">
+    <input type="checkbox" id="info_RPU" class="info-toggle">
+    <label for="info_RPU" class="info-icon">ⓘ</label>
+    <div class="tooltip-content">⚙️ <u><strong>RPU</strong></u> : Référent Préfectoral Unique.
+	<label for="info_RPU" class="tooltip-close">✖</label>
+	
+                    <u>Faciliter les démarches administratives</u> :
+					
+			Il accompagne les porteurs de projets EnR (collectivités, entreprises, développeurs) dans leurs démarches, 
+			en simplifiant les procédures et en orientant vers les bons interlocuteurs.
+			
+<u>Coordonner les services de l’État</u> : 
+
+Le RPU assure la coordination entre les différentes administrations (DREAL, DDT, services environnement, etc.), pour fluidifier les processus.
+
+<u>Appuyer les collectivités territoriales</u> :
+
+ Il soutient les communes dans la définition et la validation de leurs zones d’accélération des EnR.
+ Suivre l’instruction des projets il établit un bilan annuel de l’instruction des projets EnR.
+
+🗺️ <u>Dans le cadre des Zones d’Accélération le RPU est particulièrement mobilisé pour</u> :
+
+<ul><li>Valider les zones proposées par les communes.</li>
+<li>S’assurer de leur cohérence avec les politiques régionales et nationales.</li>
+<li>Garantir une concertation efficace entre les acteurs locaux et les services de l’État.</li></ul>
+</div>
+
+<strong>RPU</strong></td>
+            <td>Valide ou refuse l'arrêt des zones</td>
+          </tr>
+          
+		  
+		  <tr>
+		  <td style="position: relative;">
+    <input type="checkbox" id="info_GEP" class="info-toggle">
+    <label for="info_GEP" class="info-icon">ⓘ</label>
+    <div class="tooltip-content">🌿 <u><strong>GEP</strong></u> : Gestionnaire d'Espaces Protégés.
+	<label for="info_GEP" class="tooltip-close">✖</label>
+         
+             <u>Rôle du GEP dans les projets EnR et les ZAER</u> :
+			
+<ul><li>Analyse de compatibilité écologique le GEP vérifie que les zones proposées comme ZAER ne portent pas</li>
+atteinte aux espaces protégés (réserves naturelles, parcs nationaux, sites Natura 2000, ZNIEFF, etc.).
+
+<li>Évaluation des impacts potentiels Il identifie les risques pour la biodiversité, les habitats naturels et</li>
+les espèces protégées, en lien avec les projets EnR envisagés (éolien, photovoltaïque, biomasse…).
+
+<li>Appui technique aux collectivités Le GEP peut fournir des données cartographiques, des avis techniques et</li> 
+des recommandations pour orienter les communes vers des zones compatibles avec les enjeux de conservation.
+
+<li>Participation à la concertation Il intervient dans les phases de concertation territoriale pour alerter sur</li>
+les conflits d’usage ou les incompatibilités écologiques.
+
+<li>Veille réglementaire Le GEP s’assure que les projets respectent les réglementations environnementales</li>
+en vigueur, notamment celles liées aux espèces protégées et aux continuités écologiques.</ul>
+🛡️ <u><strong>Objectif principal</strong></u> :
+
+Préserver les espaces naturels tout en permettant un développement maîtrisé des énergies renouvelables.
+
+Le GEP agit comme gardien de l’équilibre entre transition énergétique et protection de la biodiversité.
+
+</div>
+<strong>GEP</strong></td>
+            
+			<td>Vérifie les zones vis-à-vis des espaces protégés</td>
+          </tr>
+         
+		 <tr>
+            <td style="position: relative;">
+    <input type="checkbox" id="info_CRE" class="info-toggle">
+    <label for="info_CRE" class="info-icon">ⓘ</label>
+    <div class="tooltip-content">🌞 <u><strong>CRE</strong></u> : Commission Régionale Énergie
+	<label for="info_CRE" class="tooltip-close">✖</label>       
+<u>Rôle spécifique de la CRE pour les EnR</u> :
+
+Organisation des appels d’offres la CRE instruit les appels d’offres pour les installations EnR (solaire,</li>
+éolien, biomasse, etc.), analyse les candidatures et remet un classement au ministère chargé de l’énergie.
+
+Gestion des dispositifs de soutien.
+
+<u>Elle supervise les mécanismes comme</u> :
+
+<ul><li>L’obligation d’achat : EDF ou les ELD doivent acheter l’électricité produite à un tarif fixé.</li>
+
+<li>Le complément de rémunération, les producteurs vendent sur le marché et reçoivent une prime pour</li>
+atteindre un niveau de rentabilité.
+
+<li>Contrôle des coûts et de la performance La CRE veille à ce que les soutiens publics soient efficaces,</li> 
+bien ciblés et maîtrisés budgétairement.
+
+<li>Encadrement réglementaire Elle propose des évolutions réglementaires pour faciliter l’intégration des EnR</li> 
+dans le mix énergétique tout en garantissant la sécurité d’approvisionnement.
+
+<li>Suivi des objectifs nationaux et européens Elle contribue à l’atteinte des objectifs fixés par la France et</li>
+l’Union européenne</ul>
+
+</div>
+
+<strong>CRE</strong></td>
+            <td>Favorise la concertation énergétique</td>
+          </tr>
+          <tr>
+            <td style="position: relative;">
+    <input type="checkbox" id="info_Accompagnateur" class="info-toggle">
+    <label for="info_Accompagnateur" class="info-icon">ⓘ</label>
+    <div class="tooltip-content">🧭 <u><strong>Accompagnateur</strong></u> : personne déléguée pour modifier des ZAER
+        <label for="info_Accompagnateur" class="tooltip-close">✖</label>        
+<u>Rôle des accompagnateurs EnR</u> :
+
+<ul><li>Conseil technique ils évaluent la faisabilité du projet (solaire, éolien, géothermie, etc...), identifient</li> 
+les technologies adaptées et proposent des scénarii d’installation.
+
+<li>Montage administratif et financier Ils aident à constituer les dossiers de demande d’aides</li>
+(MaPrimeRénov’, CEE, éco-PTZ…), à obtenir les autorisations nécessaires et à mobiliser les financements.
+
+<li>Coordination des acteurs Ils facilitent les échanges entre les porteurs de projet, les collectivités,</li> 
+les installateurs, les gestionnaires de réseau et les services de l’État.
+
+<li>Suivi de chantier et contrôle qualité Certains accompagnateurs assurent le suivi des travaux, vérifient la</li>
+conformité des installations et garantissent la performance énergétique attendue.
+
+<li>Sensibilisation et pédagogie Ils vulgarisent les enjeux énergétiques, accompagnent les changements</li>
+de comportement et favorisent l’appropriation locale des projets.</ul>
+<label class="info-toggle-wrapper"><input type="checkbox" class="info-toggle" id="accompagnateurs-toggle" />
+  <span class="info-icon">‍🔧 <u>Types d’accompagnateurs EnR</u></span>
+  <div class="tooltip-content">
+    <table class="tooltip-table">
+      <thead>
+        <tr>
+          <th>Type d’accompagnateur</th>
+          <th>Public cible</th>
+          <th>Spécificité principale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mon Accompagnateur Rénov’</td>
+          <td>Particuliers</td>
+          <td>Agréé par l’Anah, obligatoire pour certains travaux</td>
+        </tr>
+        <tr>
+          <td>Espaces Conseil France Rénov’</td>
+          <td>Particuliers & collectivités</td>
+          <td>Service public neutre et gratuit</td>
+        </tr>
+        <tr>
+          <td>Bureaux d’études techniques (BET)</td>
+          <td>Collectivités & entreprises</td>
+          <td>Expertise technique et simulation énergétique</td>
+        </tr>
+        <tr>
+          <td>Sociétés de tiers financement</td>
+          <td>Collectivités & copropriétés</td>
+          <td>Solutions avec remboursement sur économies</td>
+        </tr>
+        <tr>
+          <td>Développeurs EnR privés</td>
+          <td>Collectivités & agriculteurs</td>
+          <td>Projets clés en main, souvent avec portage financier</td>
+        </tr>
+        <tr>
+          <td>Associations ou coopératives citoyennes</td>
+          <td>Territoires ruraux ou engagés</td>
+          <td>Démarche participative et ancrage local</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</label>
+
+</div>
+<strong>Accompagnateur</strong></td>
+
+            <td>Peut être délégué pour modifier les ZAER</td>
+          </tr>
+		  	  
+            
+         </tbody>
+      </table>
+    </div>
+<div style="background-color: #ffffff; border: 1px solid #ddd; border-radius: 6px; padding: 20px; font-family: Segoe UI, sans-serif; margin: 40px 0;">
+  <h2 style="color: #005577; font-size: 1.5em; margin-bottom: 15px;">Portail d’expertise & Territoire</h2>
+  <table style="width: 100%; border-collapse: collapse;">
+    <tbody>
+      <tr style="background-color: #f9f9f9;">
+        <td style="padding: 10px; font-weight: bold; width: 30%;">Objectif</td>
+        <td style="padding: 10px;">
+          Plateforme dédiée à l’accompagnement des collectivités dans le développement des énergies renouvelables, notamment via l’identification des zones d’accélération (ZAER).
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; font-weight: bold;">Fonctionnalités</td>
+        <td style="padding: 10px;">
+          Visualisation des potentiels énergétiques, accès aux ressources techniques et réglementaires, coordination entre acteurs locaux et nationaux.
+        </td>
+      </tr>
+      <tr style="background-color: #f9f9f9;">
+        <td style="padding: 10px; font-weight: bold;">Rôle du Cerema</td>
+        <td style="padding: 10px;">
+          Le Cerema contribue à l’alimentation du portail en données territoriales, à l’expertise technique et à l’accompagnement des collectivités. Il garantit la fiabilité des informations et la diffusion des bonnes pratiques.
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; font-weight: bold;">Lien</td>
+        <td style="padding: 10px;">
+          👉 <a href="https://www.expertises-territoires.fr/jcms/pl1_141479/fr/portail-cartographique-des-energies-renouvelables" target="_blank" style="color: #005A9C; text-decoration: underline;">Accéder au portail d’expertise et territoire</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</html>
