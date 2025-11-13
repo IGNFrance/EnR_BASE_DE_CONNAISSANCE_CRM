@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>GABARIT-EnR</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f8fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      font-size: 15px;
+    }
+
+    header {
+      background-color: #005577;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      margin: 0;
+    }
+
+    h2 {
+      color: #005577;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    .section {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+    th, td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    .info-icon {
+      
+      display: inline-block;
+      cursor: help;
+      color: #d60000;
+      font-size: 1.5em;
+      vertical-align: baseline;
+      position: relative;
+    }
+
+    .info-toggle {
+  display: none;
+}
+
+.info-icon {
+  cursor: pointer;
+  color: #0078d4;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.tooltip-content {
+  display: none;
+  background-color: #005577;
+  color: #fff;
+  padding: 25px 10px;
+  border-radius: 4px;
+  margin-top: 5px;
+  position: absolute;
+  z-index: 1000;
+  width: 800px;
+  max-width: 800px;
+  font-size: 0.9em;
+ white-space: pre-line;
+
+}
+.tooltip-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 0.95em;
+  background-color: #fff;
+  color: #333;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tooltip-content th,
+.tooltip-content td {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tooltip-content th {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+
+.info-toggle:checked + .info-icon + .tooltip-content {
+  display: block;
+}
+ .tooltip-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 18px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .status-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+li {
+  line-height: 5px;
+}
+
+.valeurs-listes {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.valeurs-listes li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+  font-size: 1em;
+}
+.liste-sans-puce {
+  list-style: none;
+  padding-left: 0;
+}
+
+.liste-sans-puce li {
+  margin-bottom: 8px; /* garde l'espacement entre les lignes */
+  display: flex;
+  align-items: center;
+}
+
+
+
+  </style>
+  
+  </head>
+  <body>
+  <header>
+  <h1>Gabarit de données – Zone d’Accélération des EnR</h1>
+  </header>
+
+<div class="container">
+<div class="section">
+    <h2>Géométrie</h2>
+
+<p>Les zones doivent être représentées sous forme de <strong>polygones ou multi-polygones</strong>. Les autres types géométriques (point, ligne, etc.) ne sont pas acceptés.</p>
+<p>Recommandation : utilisation du système de projection <strong>WGS84</strong>.</p>
+
+</div>
+
+<div class="section">
+    <h2>Table des attributs</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Champ</th>
+      <th>Type</th>
+      <th>Exemple</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_nom" class="info-toggle">
+        <label for="info_nom" class="info-icon">ⓘ</label>
+        
+		nom
+		
+        <div class="tooltip-content">🏛️ nom de la ZAER utilisée comme identifiant local. 
+		<label for="info_nom" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Texte</td>
+      <td>ZAER test pour la commune</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_surface" class="info-toggle">
+        <label for="info_surface" class="info-icon">ⓘ</label>
+        
+		surface
+		
+        <div class="tooltip-content">📐 Surface en m² de la zone d’accélération.
+		<label for="info_surface" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Numérique (m²)</td>
+      <td>169585.25</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_productible" class="info-toggle">
+        <label for="info_productible" class="info-icon">ⓘ</label>
+       
+	   productible
+	   
+        <div class="tooltip-content">⚡ Production énergétique estimée en MWh.
+		
+Il s’agit de la capacité maximale théorique d’une installation EnR (souvent photovoltaïque) à produire de l’électricité dans des conditions optimales (ensoleillement plein, température idéale, etc.).
+
+Elle est calculée à partir de la surface disponible et d’un ratio de puissance surfacique (généralement entre 150 et 170 Wc/m² pour des panneaux solaires standards).
+
+🧭 À noter :
+La puissance crête (Wc/m²) ne reflète pas la production réelle, mais sert de base pour estimer le productible annuel afin de dimensionner l’installation, choisir les équipements, et est souvent utilisée dans les études de faisabilité.
+<label for="info_productible" class="tooltip-close">✖</label></div></td>
+      <td>Numérique (MWh)</td>
+      <td>1.3</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_puissance" class="info-toggle">
+        <label for="info_puissance" class="info-icon">ⓘ</label>
+        
+		puissance
+		
+        <div class="tooltip-content">🔋 Puissance installée estimée en mégawatts.
+		<label for="info_puissance" class="tooltip-close">✖</label></div></td>
+      <td>Numérique (MW)</td>
+      <td>0.12</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_usage_sol" class="info-toggle">
+        <label for="info_usage_sol" class="info-icon">ⓘ</label>
+        
+		usage_sol
+		
+        <div class="tooltip-content">🏗️ Usage actuel ou prévu du sol. 
+		
+		Valeurs autorisées : 
+		
+		FRICHE_AGRICOLE, FRICHE_INDUSTRIELLE, ANCIENNE_CARRIERE, PARKING, JACHERE, ARTIFICIALISE, A_URBANISER, FORET, BATIMENTS, AUTRE.
+		<label for="info_usage_sol" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Texte</td>
+      <td>PARKING</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_filiere" class="info-toggle">
+        <label for="info_filiere" class="info-icon">ⓘ</label>
+        
+		filiere
+		
+        <div class="tooltip-content">🔆 Filière énergétique principale.
+		
+Une filière EnR désigne l’ensemble des technologies, acteurs, infrastructures et processus liés à la production d’énergie à partir de sources renouvelables.
+ 
+Chaque filière a ses propres caractéristiques techniques, économiques et environnementales.
+
+📌 Pourquoi préciser la filière ?
+
+<li>Pour interpréter correctement les données comme la puissance ou le productible.</li>
+<li>Pour adapter les calculs aux spécificités techniques de chaque technologie.</li>
+<li>Pour orienter les décisions en matière d’aménagement, de financement ou de raccordement.</li>
+<label for="info_filiere" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Texte</td>
+      <td>SOLAIRE_PV</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_detail_filiere" class="info-toggle">
+        <label for="info_detail_filiere" class="info-icon">ⓘ</label>
+        
+		detail_filiere
+		
+        <div class="tooltip-content">🔎 Détail de la filière. Exemples : SOLAIRE_PV_NV_TOIT (Photovoltaïque neuf en toiture), EOLIEN_NV (Éolien neuf), GEOTHERMIE_PROFONDE (Géothermie profonde), BIOMETHANE_INJECTION (Injection de biométhane), etc...
+		<label for="info_detail_filiere" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Texte</td>
+      <td>SOLAIRE_PV_NV_TOIT</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_code_insee" class="info-toggle">
+        <label for="info_code_insee" class="info-icon">ⓘ</label>
+        
+		code_insee
+		
+        <div class="tooltip-content">🏙️ Code INSEE de la commune concernée.
+		<label for="info_code_insee" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Texte</td>
+      <td>74254</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_code_postal" class="info-toggle">
+        <label for="info_code_postal" class="info-icon">ⓘ</label>
+        
+		code_postal
+		
+        <div class="tooltip-content">📮 Code postal de la zone.
+		<label for="info_code_postal" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Texte</td>
+      <td>74540</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_epci" class="info-toggle">
+        <label for="info_epci" class="info-icon">ⓘ</label>
+        
+		epci
+		
+        <div class="tooltip-content">🏢 Code de l’établissement public de coopération intercommunale (EPCI).
+		<label for="info_epci" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Texte</td>
+      <td>200066793</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_dep" class="info-toggle">
+        <label for="info_dep" class="info-icon">ⓘ</label>
+        
+		dep
+		        <div class="tooltip-content">🗺️ Code du département.
+				<label for="info_dep" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Texte</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_reg" class="info-toggle">
+        <label for="info_reg" class="info-icon">ⓘ</label>
+        
+		reg
+		
+        <div class="tooltip-content">🌍 Code de la région.<label for="info_reg" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Texte</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_extension" class="info-toggle">
+        <label for="info_extension" class="info-icon">ⓘ</label>
+        
+		extension
+		
+        <div class="tooltip-content">➕ Indique si une extension de la zone est prévue (true/false).
+		
+		Utiliser le champ extension "true" dans les propriétés pour signaler qu’il s’agit d’un agrandissement
+		du polygone ZAER.
+
+Joindre une note explicative ou un commentaire dans le champ "commentaire" pour justifier l’extension.
+		<label for="info_extension" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Booléen</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td style="position: relative;">
+        <input type="checkbox" id="info_commentaire" class="info-toggle">
+        <label for="info_commentaire" class="info-icon">ⓘ</label>
+        
+		commentaire
+		
+        <div class="tooltip-content">📝 Champ libre pour ajouter des précisions ou remarques sur la zone.<label for="info_commentaire" class="tooltip-close">✖</label></div>
+      </td>
+      <td>Texte</td>
+      <td>Test pour la communauté</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Champs recommandés : <code>nom</code>, <code>filiere</code>, <code>detail_filiere</code>, <code>usage_sol</code>. Les autres sont facultatifs ou auto-calculés.</strong</p></div>
+<br>
+<div style="border: 2px solid #4CAF50; padding: 15px; margin: 20px 0; background-color: #005577;">
+  <h3 style="color: #FFFFFF;">Fichier ZAER exemple de gabarit Geojson</h3>
+  <pre style="white-space: pre-wrap; word-wrap: break-word; background-color: #eef; padding: 10px; border-radius: 5px;">
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.366227450212983, 48.872638596575115],
+            [2.366364013101201, 48.868439232700155],
+            [2.3762648224969927, 48.868686263861036],
+            [2.366227450212983, 48.872638596575115]
+          ]
+        ]
+      },
+      "properties": {
+        "nom": "ZAER test",
+        "surface": 169585.25,
+        "rapport": 0.1610,
+        "code_postal": "75011",
+        "code_insee": "75056",
+        "epci": "200054781",
+        "dep": "75",
+        "reg": "11",
+        "productible": 2,
+        "puissance": 2,
+        "usage_sol": "PARKING",
+        "filiere": "SOLAIRE_PV",
+        "detail_filiere": "SOLAIRE_PV_NV_TOIT",
+        "commentaire": "GABARIT_GeoJson_Test",
+        "extension": false
+      }
+    }
+  ]
+}
+  </pre>
+</div>
+
+<h2>Exemple de gabarit Geojson rendu</h2>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<div id="map" style="height: 400px;"></div>
+<script>
+  // Initialisation de la carte centrée sur Paris
+  var map = L.map('map').setView([48.8705, 2.3712], 16);
+
+  // Fond de carte OpenStreetMap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Charger ton fichier texte (exemple si c’est du GeoJSON)
+  fetch('fichier_ZAER_exemple_de_gabarit.geojson')
+    .then(response => response.json())
+    .then(data => {
+      L.geoJSON(data, {
+        onEachFeature: function (feature, layer) {
+          if (feature.properties) {
+            layer.bindPopup("Nom: " + feature.properties.nom);
+          }
+        }
+      }).addTo(map);
+    });
+// Définition du GeoJSON
+var zaerGeoJSON = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [2.366227450212983, 48.872638596575115],
+            [2.366364013101201, 48.868439232700155],
+            [2.3762648224969927, 48.868686263861036],
+            [2.366227450212983, 48.872638596575115]
+          ]
+        ]
+      },
+      "properties": {
+        "nom": "ZAER test",
+        "surface": 169585.25453855118,
+        "rapport": 0.1610,
+        "code_postal": "75011",
+        "code_insee": "75056",
+        "epci": "200054781",
+        "dep": "75",
+        "reg": "11",
+        "productible": 2,
+        "puissance": 2,
+        "usage_sol": "PARKING",
+        "filiere": "SOLAIRE_PV",
+        "detail_filiere": "SOLAIRE_PV_NV_TOIT",
+        "commentaire": "GABARIT_GeoJson_Test ",
+        "extension": false
+      }
+    }
+  ]
+};
+
+// Ajout du GeoJSON à la carte avec un style
+L.geoJSON(zaerGeoJSON, {
+  style: {
+    color: "#e91616",
+    weight: 2,
+    opacity: 0.65
+  },
+  onEachFeature: function (feature, layer) {
+    layer.bindPopup("<strong>" + feature.properties.nom + "</strong><br>" +
+                    "Surface: " + feature.properties.surface.toFixed(2) + " m²<br>" +
+                    "Usage: " + feature.properties.usage_sol + "<br>" +
+                    "Filière: " + feature.properties.filiere);
+  }
+}).addTo(map);
+</script>
+
+
+<div class="section"><h2>Valeurs autorisées – <code>usage_sol</code></h2>
+
+ <ul class="liste-sans-puce">
+ 
+<li> <svg viewBox="0 0 24 24" width="16" height="16" style="vertical-align: middle; margin-right: 8px;">
+      <path d="M4 20h16M4 16h16M4 12h16" stroke="#4CAF50" stroke-width="2"/>
+      <circle cx="6" cy="6" r="2" fill="#4CAF50"/>
+    </svg>FRICHE_AGRICOLE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><rect x="3" y="10" width="18" height="10" fill="#607D8B"/><path d="M6 10V6h2v4M10 10V4h2v6" stroke="#455A64" stroke-width="2"/></svg>
+FRICHE_INDUSTRIELLE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><path d="M2 20L12 4L22 20H2Z" fill="#795548"/></svg>ANCIENNE_CARRIERE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><rect x="4" y="4" width="16" height="16" stroke="#9E9E9E" stroke-width="2"/><text x="8" y="16" font-size="10" fill="#616161">P</text></svg>
+PARKING</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 20c4-8 12-8 16 0" stroke="#8BC34A" stroke-width="2" fill="none"/></svg>
+JACHERE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><rect x="4" y="4" width="16" height="16" fill="#BDBDBD"/><path d="M4 4L20 20" stroke="#757575" stroke-width="2"/></svg>
+ARTIFICIALISE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><path d="M2 22L22 2" stroke="#FF9800" stroke-width="2"/><rect x="6" y="6" width="12" height="12" fill="none" stroke="#FF9800" stroke-width="2"/></svg>
+A_URBANISER</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2L8 10h8L12 2zM6 12h12v2H6z" fill="#4CAF50"/></svg>
+FORET</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><rect x="6" y="6" width="12" height="12" fill="#607D8B"/><path d="M10 10h4v4h-4z" fill="#CFD8DC"/></svg>
+BATIMENTS</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10" stroke="#9E9E9E" stroke-width="2"/><text x="8" y="16" font-size="10" fill="#616161">?</text></svg>
+AUTRE</li>
+</ul>
+
+</div>
+
+<div class="section"><h2>Valeurs autorisées – <code>filiere</code></h2>
+<ul class= "liste-sans-puce">
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><rect x="6" y="6" width="12" height="12" fill="#FFC107"/><path d="M6 6L18 18M6 18L18 6" stroke="#FF9800" stroke-width="2"/></svg>
+SOLAIRE_PV</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="6" fill="#FF5722"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="#FF9800" stroke-width="2"/></svg>
+SOLAIRE_THERMIQUE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="2" fill="#03A9F4"/><path d="M12 12L12 4M12 12L18 16M12 12L6 16" stroke="#0288D1" stroke-width="2"/></svg>
+EOLIEN</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 12c2 4 4 4 6 0s4-4 6 0 4 4 6 0" stroke="#2196F3" stroke-width="2" fill="none"/></svg>
+HYDROELECTRICITE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2v20M6 12h12" stroke="#795548" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="#FF7043"/></svg>
+GEOTHERMIE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2C8 6 8 18 12 22C16 18 16 6 12 2Z" fill="#8BC34A"/></svg>
+BIOMETHANE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><path d="M6 12c2-4 10-4 12 0s-2 8-6 8-8-4-6-8z" fill="#4CAF50"/></svg>BIOMASSE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><path d="M2 12c2 4 4 4 6 0s4-4 6 0 4 4 6 0" stroke="#00BCD4" stroke-width="2" fill="none"/></svg>
+THALASSOTHERMIE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><path d="M4 12h16M4 16h16M4 20h16" stroke="#03A9F4" stroke-width="2"/></svg>
+AEROTHERMIE</li>
+
+<li><svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2C8 6 8 18 12 22C16 18 16 6 12 2Z" fill="#FF5722"/></svg>
+CHALEUR</li></ul></div>
+
+
+<div class="section"><h2>Valeurs autorisées – <code>detail_filiere</code></h2>
+
+<table><thead><tr><th>Code</th><th>Description</th></tr></thead>
+
+<tbody><tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <rect x="6" y="6" width="12" height="12" fill="#FFC107"/>
+  <path d="M6 10L12 4L18 10" stroke="#795548" stroke-width="2"/>
+</svg>
+SOLAIRE_PV_NV_TOIT</td><td>Photovoltaïque neuf en toiture</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <rect x="6" y="6" width="12" height="12" fill="#FFC107"/>
+  <rect x="4" y="18" width="16" height="2" fill="#8BC34A"/>
+</svg>
+SOLAIRE_PV_NV_SOL</td><td>Photovoltaïque neuf au sol</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <rect x="6" y="6" width="12" height="12" fill="#FFC107"/>
+  <path d="M4 8h16v2H4z" fill="#B0BEC5"/>
+</svg>
+SOLAIRE_PV_NV_OMBRIERE</td><td>Photovoltaïque neuf sur ombrière</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <rect x="6" y="6" width="12" height="12" fill="#FFC107"/>
+  <path d="M4 8h16v2H4z" fill="#B0BEC5"/>
+</svg>
+SOLAIRE_PV_NV_AUTRE</td><td>Autre type photovoltaïque neuf</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <rect x="6" y="6" width="12" height="12" fill="#FFC107"/>
+  <path d="M6 10L12 4L18 10" stroke="#795548" stroke-width="2"/>
+</svg>
+SOLAIRE_PV_RNV_TOIT</td><td>Photovoltaïque en rénovation sur toiture</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <rect x="6" y="6" width="12" height="12" fill="#FFC107"/>
+  <rect x="4" y="18" width="16" height="2" fill="#8BC34A"/>
+</svg>
+SOLAIRE_PV_RNV_SOL</td><td>Photovoltaïque en rénovation au sol</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <rect x="6" y="6" width="12" height="12" fill="#FFC107"/>
+  <path d="M4 8h16v2H4z" fill="#B0BEC5"/>
+</svg>
+SOLAIRE_PV_RNV_OMBRIERE</td><td>Photovoltaïque en rénovation sur ombrière</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <rect x="6" y="6" width="12" height="12" fill="#FFC107"/>
+  <path d="M4 8h16v2H4z" fill="#B0BEC5"/>
+</svg>
+SOLAIRE_PV_RNV_AUTRE</td><td>Autre photovoltaïque en rénovation</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <circle cx="12" cy="12" r="6" fill="#FF5722"/>
+  <path d="M6 10L12 4L18 10" stroke="#795548" stroke-width="2"/>
+</svg>
+SOLAIRE_THERMIQUE_TOIT</td><td>Solaire thermique sur toiture</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <circle cx="12" cy="12" r="6" fill="#FF5722"/>
+  <path d="M4 12h16M8 8v8M16 8v8" stroke="#9E9E9E" stroke-width="2"/>
+</svg>
+SOLAIRE_THERMIQUE_RCF</td><td>Réseaux de chaleur solaire thermique</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <circle cx="12" cy="12" r="6" fill="#FF5722"/>
+  <rect x="6" y="10" width="12" height="10" fill="#607D8B"/>
+</svg>
+SOLAIRE_THERMIQUE_BATIMENT</td><td>Chauffage solaire thermique en bâtiment</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <rect x="6" y="6" width="12" height="12" fill="#FFC107"/>
+  <rect x="4" y="18" width="16" height="2" fill="#8BC34A"/>
+</svg>
+SOLAIRE_THERMIQUE_SOL</td><td>Solaire thermique au sol</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <rect x="6" y="6" width="12" height="12" fill="#FFC107"/>
+  <path d="M4 8h16v2H4z" fill="#B0BEC5"/>
+</svg>
+SOLAIRE_THERMIQUE_OMBRIERE</td><td>Solaire thermique sur ombrière</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <circle cx="12" cy="12" r="2" fill="#03A9F4"/>
+  <path d="M12 12L12 4M12 12L18 16M12 12L6 16" stroke="#0288D1" stroke-width="2"/>
+</svg>
+EOLIEN_NV</td><td>Éolien neuf</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <circle cx="12" cy="12" r="2" fill="#B0BEC5"/>
+  <path d="M12 12L12 4M12 12L18 16M12 12L6 16" stroke="#78909C" stroke-width="2"/>
+</svg>
+EOLIEN_RNV</td><td>Éolien en rénovation</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <path d="M12 2v20M6 12h12" stroke="#795548" stroke-width="2"/>
+  <circle cx="12" cy="12" r="4" fill="#FF7043"/>
+</svg>
+GEOTHERMIE_SURFACE</td><td>Géothermie de surface</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <path d="M12 2v20M6 12h12" stroke="#795548" stroke-width="2"/>
+  <circle cx="12" cy="12" r="4" fill="#FF7043"/>
+</svg>
+GEOTHERMIE_PROFONDE</td><td>Géothermie profonde</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <path d="M12 2v20" stroke="#795548" stroke-width="2"/>
+  <path d="M4 12h16M8 8v8M16 8v8" stroke="#9E9E9E" stroke-width="2"/>
+</svg>
+GEOTHERMIE_RCF</td><td>Réseaux de chaleur géothermiques</td></tr>
+
+<tr><td> <svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <rect x="6" y="10" width="12" height="10" fill="#607D8B"/>
+        <path d="M12 2v20" stroke="#795548" stroke-width="2"/>
+        <circle cx="12" cy="12" r="4" fill="#FF7043"/>
+      </svg>
+	  GEOTHERMIE_BATIMENT</td><td>Chauffage géothermique en bâtiment</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <path d="M12 2C8 6 8 18 12 22C16 18 16 6 12 2Z" fill="#8BC34A"/>
+  <path d="M12 22v-4" stroke="#4CAF50" stroke-width="2"/>
+</svg>
+BIOMETHANE_INJECTION</td><td>Injection de biométhane</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <circle cx="12" cy="12" r="6" fill="#8BC34A"/>
+        <path d="M6 12h12M12 6v12" stroke="#4CAF50" stroke-width="2"/>
+      </svg>
+	  METHANE_COGE</td><td>Cogénération à base de méthane</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <path d="M12 2C8 6 8 18 12 22C16 18 16 6 12 2Z" fill="#8BC34A"/>
+        <path d="M4 12h16M8 8v8M16 8v8" stroke="#9E9E9E" stroke-width="2"/>
+      </svg>
+	  BIOMETHANE_RCF</td><td>Réseaux de chaleur biométhane</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <path d="M12 2C8 6 8 18 12 22C16 18 16 6 12 2Z" fill="#8BC34A"/>
+        <rect x="6" y="10" width="12" height="10" fill="#607D8B"/>
+      </svg>
+	  BIOMETHANE_BATIMENT</td><td>Chauffage biométhane bâtiment</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <path d="M6 12c2-4 10-4 12 0s-2 8-6 8-8-4-6-8z" fill="#4CAF50"/>
+        <path d="M4 12h16M8 8v8M16 8v8" stroke="#9E9E9E" stroke-width="2"/>
+      </svg>
+	  BIOMASSE_RESEAU_CF</td><td>Biomasse pour réseau chaleur/froid</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <path d="M6 12c2-4 10-4 12 0s-2 8-6 8-8-4-6-8z" fill="#4CAF50"/>
+        <path d="M4 12h16" stroke="#9E9E9E" stroke-width="2"/>
+      </svg>
+	  BIOMASSE_RCF</td><td>Réseaux de chaleur biomasse</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <path d="M6 12c2-4 10-4 12 0s-2 8-6 8-8-4-6-8z" fill="#4CAF50"/>
+  <rect x="6" y="10" width="12" height="10" fill="#607D8B"/>
+</svg>
+BIOMASSE_BATIMENT</td><td>Chauffage biomasse en bâtiment</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <path d="M2 12c2 4 4 4 6 0s4-4 6 0 4 4 6 0" stroke="#00BCD4" stroke-width="2" fill="none"/>
+  <path d="M4 12h16M8 8v8M16 8v8" stroke="#9E9E9E" stroke-width="2"/>
+</svg>
+THALASSOTHERMIE_RCF</td><td>Réseaux de chaleur thalassothermie</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <path d="M2 12c2 4 4 4 6 0s4-4 6 0 4 4 6 0" stroke="#00BCD4" stroke-width="2" fill="none"/>
+  <path d="M4 12h16M8 8v8M16 8v8" stroke="#9E9E9E" stroke-width="2"/>
+</svg>
+THALASSOTHERMIE_BATIMENT</td><td>Thalassothermie en bâtiment</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <path d="M4 12h16M4 16h16M4 20h16" stroke="#03A9F4" stroke-width="2"/>
+        <path d="M8 8v8M16 8v8" stroke="#9E9E9E" stroke-width="2"/>
+      </svg>
+	  AEROTHERMIE_RCF</td><td>Réseaux de chaleur aérothermie</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <rect x="6" y="10" width="12" height="10" fill="#607D8B"/>
+        <path d="M4 12h16M4 16h16M4 20h16" stroke="#03A9F4" stroke-width="2"/>
+      </svg>
+	  AEROTHERMIE_BATIMENT</td><td>Aérothermie bâtiment</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="24" height="24">
+  <rect x="4" y="4" width="16" height="16" fill="#FF5722"/>
+  <path d="M8 8h8v8H8z" fill="#FFF"/>
+</svg>
+CHALEUR_DATACENTER</td><td>Valorisation de chaleur datacenter</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <rect x="4" y="10" width="16" height="10" fill="#FF5722"/>
+        <path d="M6 10V6h2v4M10 10V4h2v6" stroke="#F44336" stroke-width="2"/>
+      </svg>
+	  CHALEUR_INDUSTRIE</td><td>Valorisation de chaleur industrielle</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <path d="M4 12c2 4 4 4 6 0s4-4 6 0 4 4 6 0" stroke="#2196F3" stroke-width="2" fill="none"/>
+        <path d="M12 22v-4" stroke="#F44336" stroke-width="2"/>
+      </svg>
+	  CHALEUR_STEP</td><td>Valorisation de chaleur STEP</td></tr><tr>
+
+<td><svg viewBox="0 0 24 24" width="24" height="24">
+  <path d="M12 2C8 6 8 18 12 22C16 18 16 6 12 2Z" fill="#FF5722"/>
+  <path d="M12 22v-4" stroke="#F44336" stroke-width="2"/>
+</svg>
+CHALEUR_UVE_UIOM</td><td>Valorisation UVE / UIOM</td></tr><tr>
+
+<td><svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <circle cx="12" cy="12" r="6" fill="#FF9800"/>
+        <path d="M4 12h16M8 8v8M16 8v8" stroke="#9E9E9E" stroke-width="2"/>
+      </svg>
+	  CHALEUR_IE_RCF</td><td>Chaleur d’initiatives énergétiques – réseaux de chaleur</td></tr>
+
+<tr><td><svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle; margin-right: 8px;">
+        <circle cx="12" cy="12" r="6" fill="#FF9800"/>
+        <rect x="6" y="10" width="12" height="10" fill="#607D8B"/>
+      </svg>
+	  CHALEUR_IE_BATIMENT</td><td>Chaleur d’initiatives énergétiques – bâtiment</td></tr></tbody></table></div></div>
+
+</body>
+</html>
