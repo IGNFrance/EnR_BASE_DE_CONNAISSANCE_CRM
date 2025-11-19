@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Statuts et parcours d'une ZAER</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f8fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      font-size: 15px;
+    }
+
+    header {
+      background-color: #005577;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      margin: 0;
+    }
+
+    h2 {
+      color: #005577;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    .section {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+    th, td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    .info-toggle {
+      display: none;
+    }
+
+    .info-icon {
+	font-size: 24px;
+      cursor: pointer;
+      color: #0078d4;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    .tooltip-content {
+      display: none;
+      background-color: #005577;
+      color: #fff;
+      padding: 25px 10px;
+      border-radius: 4px;
+      margin-top: 5px;
+      position: absolute;
+      z-index: 1000;
+      width: 800px;
+      max-width: 800px;
+      font-size: 0.9em;
+      white-space: pre-line;
+    }
+
+    .tooltip-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.95em;
+      background-color: #fff;
+      color: #333;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .tooltip-content th,
+    .tooltip-content td {
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .tooltip-content th {
+      background-color: #e0e0e0;
+      font-weight: bold;
+    }
+
+    .info-toggle:checked + .info-icon + .tooltip-content {
+      display: block;
+    }
+
+    .tooltip-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 18px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    td {
+      position: relative;
+    }
+.zaer-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 32px; /* espace entre les blocs */
+  border-radius: 6px;  /* coins arrondis */
+}
+
+.zaer-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.zaer-table th,
+.zaer-table td {
+  border: 1px solid #d7dbe0;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.oui {
+  color: #1d9625;   /* vert foncé */
+  font-weight: bold;
+}
+
+.non {
+  color: #db2929;   /* rouge foncé */
+  font-weight: bold;
+}
+	
+	
+  </style>
+</head>
+<body>
+  <header>
+      
+    <h1>Statuts et parcours d'une ZAER</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+        <div class="zaer-card">
+        
+      <h2>Statuts des zones ZAER</h2>
+       <table class="zaer-table">
+        <thead>
+          <tr>
+            <th>Statut</th>
+            <th>Description</th>
+          
+          </tr>
+        </thead>
+       
+        <tbody>
+		 <tr>
+            <td>
+              <input type="checkbox" id="info_brouillon" class="info-toggle">
+              <label for="info_brouillon" class="info-icon">ⓘ</label>
+              <div class="tooltip-content">📝 <u><strong>Brouillon</strong></u> : statut initial de la zone, modifiable et supprimable.
+                <label for="info_brouillon" class="tooltip-close">✖</label>
+                Ce statut indique que la ZAER est en cours de saisie par la commune ou l’accompagnateur. Elle peut être librement ajustée avant toute soumission officielle.
+				Actuellement, les DDT et DREAL de la commune ont la possibilité de les visualiser.
+              </div>
+              <strong>BROUILLON</strong>
+            </td>
+            <td>Zone enregistrée – modifiable et supprimable</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" id="info_avis" class="info-toggle">
+              <label for="info_avis" class="info-icon">ⓘ</label>
+              <div class="tooltip-content">📨 <u><strong>En attente d'avis</strong></u> : zone soumise pour avis aux partenaires territoriaux.
+                <label for="info_avis" class="tooltip-close">✖</label>
+                 la zone est soumise pour avis/conseil/critique par la commune. L’ensemble des acteurs locaux de la planification énergétique est averti par email automatique. 
+				 La phase « avis » n’est pas obligatoire: elle permet à la commune de se rassurer. 
+				 
+				 A noter que ce n’est pas parce qu’un avis est émis que la zone passe automatiquement en mode arrêt. 
+				 
+				 La commune doit dans tous les cas cliquer sur « demander l’arrêt » pour passer la zone en mode « demande d'arrêt ». Une zone en mode «AVIS» peut être supprimée. 
+              </div>
+              <strong>AVIS_DEMANDE</strong>
+            </td>
+            <td>Soumise pour avis – modifiable et supprimable</td>
+          </tr>
+		   <tr>
+            <td>
+              <input type="checkbox" id="info_arret_demande" class="info-toggle">
+              <label for="info_arret_demande" class="info-icon">ⓘ</label>
+              <div class="tooltip-content">📋 <u><strong>Demande d’arrêt</strong></u> : zone en cours d’arrêt, non supprimable.
+                <label for="info_arret_demande" class="tooltip-close">✖</label>
+                la zone est déposée pour arrêt par la commune. Un mail est envoyé automatiquement au RPU. 
+				
+				Seul ce dernier a la main pour confirmer ou non l’arrêt. Actuellement, il n’est pas possible de supprimer une zone déposée pour arrêt. 
+				
+				Pour cela, il faut contacter contact.enr@ign.fr, avec la liste des zones déposées pour arrêt à supprimer. 
+				
+				Le besoin de pouvoir supprimer ses zones à n’importe quelle étape de manière autonome semble être de plus en plus important, et pourra faire l’objet d’une éventuelle évolution de l’outil. 
+              </div>
+              <strong>ARRET_DEMANDE</strong>
+            </td>
+            <td>Non supprimable</td>
+          </tr>
+		   <tr>
+            <td>
+              <input type="checkbox" id="info_arretee" class="info-toggle">
+              <label for="info_arretee" class="info-icon">ⓘ</label>
+              <div class="tooltip-content">✅ <u><strong>Arrêtée</strong></u> : zone officiellement arrêtée par le RPU.
+                <label for="info_arretee" class="tooltip-close">✖</label>
+				la zone est arrêtée par le RPU. De fait, elle alimente la base de données nationale des ZAER disponible à tout public
+                
+				La ZAER est validée et publiée dans le Registre Public Unique. 
+				Elle devient opposable et entre dans le cadre réglementaire des EnR.
+              </div>
+              <strong>ARRETEE</strong>
+            </td>
+            <td>Zone arrêtée par le RPU</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" id="info_refusee" class="info-toggle">
+              <label for="info_refusee" class="info-icon">ⓘ</label>
+              <div class="tooltip-content">❌ <u><strong>Refusée</strong></u> : zone rejetée par les autorités compétentes.
+                <label for="info_refusee" class="tooltip-close">✖</label>
+                La ZAER ne répond pas aux critères requis ou présente des incompatibilités. 
+				
+				Elle ne peut pas être poursuivie dans le processus de validation.
+				La zone est refusée par le RPU.
+              </div>
+              <strong>REFUSEE</strong>
+            </td>
+            <td>Zone refusée</td>
+          </tr>
+          
+          <!-- Réutilisation du code existant -->
+          <!-- ... (déjà fourni dans ton message précédent) -->
+        </tbody>
+      </table>
+      </div>
+   
+     
+    <!-- Tableau 1 : ZAER - qui voit quoi ? -->
+<div class="zaer-card">
+  <h2>Qui peut voir les ZAER ?</h2>
+<p><strong>Le producteur de la donnée peut voir toutes "ses" ZAER enregistrées.</strong></p>
+  <table class="zaer-table">
+    <thead>
+      <tr>
+        <th>Statut</th>
+        <th>Visibilité</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Brouillon</strong></td>
+        <td>Visible uniquement par le porteur de projet</td>
+      </tr>
+      <tr>
+        <td><strong>Demande d’avis</strong></td>
+        <td>Visible par les autorités consultées (services instructeurs, collectivités concernées)</td>
+      </tr>
+      <tr>
+        <td><strong>Demande d’arrêt</strong></td>
+        <td>Visible par l’administration – pas encore arrêtée officiellement</td>
+      </tr>
+      <tr>
+        <td><strong>Arrêtée</strong></td>
+        <td>Visible par toutes les autorités compétentes</td>
+      </tr>
+      <tr>
+        <td><strong>Refusée</strong></td>
+        <td>Zone rejetée par les autorités compétentes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Tableau 2 : Accessibilité des ZAER -->
+<div class="zaer-card">
+  <div class="zaer-title">
+      
+    <h2>Accessibilité d'une ZA:</h2> <strong>Selon l'emprise administrative en fonction de l'avancement et du rôle de l'utilisateur</strong>
+    
+  </div>
+
+  <table class="zaer-table">
+    <thead>
+      <tr>
+        <th>Avancement</th>
+        <th>Commune</th>
+        <th>EPCI</th>
+        <th>DDT</th>
+        <th>RP</th>
+        <th>GPE</th>
+        <th>PNR</th>
+        <th>DREAL</th>
+        <th>CRE</th>
+        <th>Accompagnateur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Brouillon</strong></td>
+        <td class="oui">Oui</td>
+		<td class="non">Non</td>
+		<td class="oui">Oui</td>
+		<td class="oui">oui</td>
+		<td class="non">Non</td>
+		<td class="oui">Oui</td>
+		<td class="non">Non</td>
+		<td class="non">Non</td>
+		<td class="non">Non</td>
+		
+      </tr>
+      <tr>
+        <td><strong>En demande d’avis</strong></td>
+        <td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="non">Non</td>
+		<td class="non">Non</td>
+      </tr>
+      <tr>
+        <td><strong>En demande d’arrêt</strong></td>
+        <td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="non">Non</td>
+		<td class="non">Non</td>
+      </tr>
+      <tr>
+        <td><strong>Arrêtée</strong></td>
+        <td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="non">Non</td>
+		<td class="non">Non</td>
+      </tr>
+      <tr>
+        <td><strong>Refusée</strong></td>
+        <td   class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="oui">Oui</td>
+		<td class="non">Non</td>
+		<td class="non">Non</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    </tbody>
+  </table>
+    </div>
+
+ </html>
